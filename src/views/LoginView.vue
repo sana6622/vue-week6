@@ -38,7 +38,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 console.log(import.meta.env);
 const { VITE_URL } = import.meta.env;
 
@@ -53,24 +53,24 @@ export default {
   },
   mounted() {},
   methods: {
-    // login() {
-    //   // const api = 'https://vue3-course-api.hexschool.io/v2/admin/signin';
-    //   const api = `${VITE_URL}/admin/signin`;
+    login() {
+      // const api = 'https://vue3-course-api.hexschool.io/v2/admin/signin';
+      const api = `${VITE_URL}/admin/signin`;
 
-    //   axios
-    //     .post(api, this.user)
-    //     .then((res) => {
-    //       const { token, expired } = res.data;
-    //       document.cookie = `hexschoolToken=${token}; expires=${new Date(expired)}`;
+      axios
+        .post(api, this.user)
+        .then((res) => {
+          const { token, expired } = res.data;
+          document.cookie = `hexschoolToken=${token}; expires=${new Date(expired)}`;
 
-    //       // 進後台
-    //       this.$router.push('/admin/adminHome');
-    //     })
-    //     .catch((error) => {
-    //       console.log('login error', error);
-    //       alert('登入失敗');
-    //     });
-    // }
+          // 進後台
+          this.$router.push('/admin/adminHome');
+        })
+        .catch((error) => {
+          console.log('login error', error);
+          alert('登入失敗');
+        });
+    }
   }
 };
 </script>
